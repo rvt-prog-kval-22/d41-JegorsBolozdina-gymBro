@@ -5,4 +5,5 @@ gymBro ir Web un iOS aplikācija, kas padara nodarbošanas ar sportu daudz viegl
 Izmantotas tehnoloģijas
 
 Backend: PHP, MySQL
+
 Frontend: HTML, SASS, Vue
