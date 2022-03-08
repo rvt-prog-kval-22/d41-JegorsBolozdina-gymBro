@@ -1,5 +1,7 @@
 <?php
-require_once "config.php";
+opcache_reset();
+
+require_once "../config/sql.php";
  
 $username = $password = $confirm_password = "";
 $username_err = $password_err = $confirm_password_err = "";
@@ -56,13 +58,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
+            echo var_dump($stmt);
+            die;
             mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
             
             $param_username = $username;
             $param_password = password_hash($password, PASSWORD_DEFAULT);
             
             if(mysqli_stmt_execute($stmt)){
-                header("location: login.php");
+                header("location: ../auth/login.php");
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
             }
@@ -79,7 +83,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sign Up</title>
+    <title>Reģistrācija</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body{ font: 14px sans-serif; }
@@ -88,7 +92,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </head>
 <body>
     <div class="wrapper">
-        <h3>Sign Up</h3>
+        <h3>Reģistrācija</h3>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group">
                 <label>Username</label>
@@ -109,7 +113,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <input type="submit" class="btn btn-primary" value="Submit">
                 <input type="reset" class="btn btn-secondary ml-2" value="Reset">
             </div>
-            <p>Jau ir konts? <a href="login.php">Ielogoties</a></p>
+            <p>Jau ir konts? <a href="../auth/login.php">Ielogoties</a></p>
         </form>
     </div>    
 </body>
