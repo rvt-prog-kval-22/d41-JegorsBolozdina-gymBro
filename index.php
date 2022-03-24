@@ -34,6 +34,7 @@ $res = mysqli_query($link, $sql);
                   <p><img src="assets/images/exercises/placeholder.png" class="img-fluid"></img></p>
                   <p><?= $r['description'] ?></p>
                   <p><?= $r['created_at'] ?></p>
+                  <p><?= $r['user_id'] ?></p>
                 </div> 
             <?php } ?>
         </div>  

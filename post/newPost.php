@@ -13,17 +13,26 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 }
 
 $title = $desc = "";
+
+$sessionUsername = $_SESSION["username"];
+$getUsernameSql = "SELECT id FROM users WHERE username = '$sessionUsername'";
+$res = mysqli_query($link, $getUsernameSql);
+$sessionUserId = intval(mysqli_fetch_assoc($res)['id']);
+
 //$username = $_SESSION["username"];
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     
-    $sql = "INSERT INTO posts (title, description) VALUES (?, ?)";
+    $sql = "INSERT INTO posts (title, description, user_id) VALUES (?, ?, ?)";
      
+        echo var_dump(mysqli_prepare($link, $sql));
         if($stmt = mysqli_prepare($link, $sql)){
-            mysqli_stmt_bind_param($stmt, "ss", $param_title, $param_description);
+            mysqli_stmt_bind_param($stmt, "ssi", $param_title, $param_description, $param_userid);
             
             $param_title = trim($_POST["title"]);
             $param_description = trim($_POST["desc"]);
+            $param_userid = $sessionUserId;
+
             echo $param_username . $param_title . $param_description;
             
             if(mysqli_stmt_execute($stmt)){
@@ -36,7 +45,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             mysqli_stmt_close($stmt);
         }
-        echo var_dump($stmt);
     mysqli_close($link);
 }
 ?>
