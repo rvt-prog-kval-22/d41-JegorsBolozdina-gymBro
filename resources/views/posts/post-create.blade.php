@@ -21,16 +21,30 @@
 
                         <!-- Name -->
                         <div>
-                            <x-label for="title" :value="__('Title')" />
+                            <x-label for="title" :value="'Title'" />
 
                             <x-input id="title" class="block mt-1 w-full" type="text" name="title" :value="old('title')" required autofocus />
                         </div>
 
                         <!-- Post Description  -->
                         <div class="mt-4">
-                            <x-label for="description" :value="__('Description')" />
+                            <x-label for="description" :value="'Description'" />
 
                             <x-input id="description" class="block mt-1 w-full" type="text" name="description" :value="old('description')" required />
+                        </div>
+
+                        <!-- Time to execute (in seconds)  -->
+                        <div class="mt-4">
+                            <x-label for="time" :value="'Time (in seconds)'" />
+
+                            <x-input id="time" class="block mt-1 w-full" type="text" name="time" :value="old('time')" required />
+                        </div>
+
+                        <!-- Calories  -->
+                        <div class="mt-4">
+                            <x-label for="kcal" :value="'Estimated calorie burn'" />
+
+                            <x-input id="kcal" class="block mt-1 w-full" type="text" name="kcal" :value="old('kcal')" required />
                         </div>
 
                         <div class="flex items-center justify-end mt-4">

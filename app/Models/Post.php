@@ -14,21 +14,17 @@ class Post extends Model
     protected $fillable = [
         'title',
         'description',
-        'author_id'
+        'calories',
+        'time',
+        'author_id',
+        'category_id',
     ];
 
     public function author(){
         return $this->belongsTo(User::class);
     }
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-
-    /**
-     * @param string $role
-     * @return bool
-     */
+    public function category(){
+        return $this->belongsTo(Post::class);
+    }
 }

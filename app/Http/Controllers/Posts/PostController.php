@@ -56,6 +56,8 @@ class PostController extends Controller
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:255'], // update db to support more than 255
+            'description' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:255'],
         ]);
 
         $postData = [
