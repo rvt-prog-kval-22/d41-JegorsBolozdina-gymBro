@@ -55,15 +55,17 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string', 'max:255'], // update db to support more than 255
-            'description' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string'],
+            'kcal' => ['required', 'integer'],
+            'time' => ['required', 'integer'],
         ]);
 
         $postData = [
             'title' => $request->title,
             'description' => $request->description,
             'author_id' => $request->user()->id,
+            'kcal' => $request->kcal,
+            'time' => $request->time,
         ];
 
         $post = Post::create($postData);

@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->integer('calories');
+            $table->integer('kcal');
             $table->integer('time');
             $table->bigInteger('author_id')->unsigned();
             $table->bigInteger('category_id')->unsigned();
