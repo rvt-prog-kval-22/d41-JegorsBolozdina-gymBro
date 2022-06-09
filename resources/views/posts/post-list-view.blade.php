@@ -22,8 +22,9 @@
                             <hr>
                             <p class="py-4">{{ $post['description'] }}</p>
                             <hr>
+                            <p class="pt-3">{{ $post['kcal'] }} kcal {{ round($post['time']/60,1) }} min</p>
                             <p class="pt-3">{{ $post['author_name'] }}</p>
-                            <p>{{ $post['created_at'] }}</p>
+                            <p>{{ Illuminate\Support\Carbon::parse($post['created_at'])->format('d/m/Y H:i') }}</p>
                         </div>
                     </div>
                 </div>

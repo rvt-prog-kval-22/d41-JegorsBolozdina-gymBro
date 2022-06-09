@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Posts;
 
 use App\Http\Controllers\Controller;
-use App\Models\Post;
+use App\Http\Repositories\CategoryRepository;
 use App\Http\Repositories\PostRepository;
 use App\Http\Repositories\UserRepository;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Auth;
@@ -16,10 +17,15 @@ class PostController extends Controller
 
     public $userRepository;
 
-    public function __construct(PostRepository $postRepository, UserRepository $userRepository)
+    public function __construct(
+        PostRepository $postRepository,
+        UserRepository $userRepository,
+        CategoryRepository $categoryRepository,
+    )
     {
         $this->postRepository = $postRepository;
         $this->userRepository = $userRepository;
+        $this->categoryRepository = $categoryRepository;
     }
 
     public function viewList()
@@ -58,6 +64,7 @@ class PostController extends Controller
             'description' => ['required', 'string'],
             'kcal' => ['required', 'integer'],
             'time' => ['required', 'integer'],
+            'category_id' => ['required'],
         ]);
 
         $postData = [
@@ -66,6 +73,7 @@ class PostController extends Controller
             'author_id' => $request->user()->id,
             'kcal' => $request->kcal,
             'time' => $request->time,
+            'category_id' => $request->category_id,
         ];
 
         $post = Post::create($postData);
@@ -86,6 +94,6 @@ class PostController extends Controller
 
     public function create()
     {
-        return view('posts.post-create');
+        return view('posts.post-create', ['categories' => $this->categoryRepository->getAllCategories()]);
     }
 }

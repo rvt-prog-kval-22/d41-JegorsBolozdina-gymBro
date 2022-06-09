@@ -14,7 +14,7 @@ class Post extends Model
     protected $fillable = [
         'title',
         'description',
-        'calories',
+        'kcal',
         'time',
         'author_id',
         'category_id',

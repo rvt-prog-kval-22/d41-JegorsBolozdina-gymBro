@@ -30,8 +30,8 @@ class AdminAuthenticated
                 return redirect(route('dashboard'));
             }
 
-            // allow admin to proceed with request
-            else if ( $user->hasRole('admin') ) {
+            // superadmin only for now since the panel only includes user role change
+            else if ( $user->hasRole('superadmin') ) {
                 return $next($request);
             }
         }
