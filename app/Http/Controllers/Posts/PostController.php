@@ -57,7 +57,7 @@ class PostController extends Controller
         return view('posts.post', ['post' => $post]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request, $postId = null)
     {
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
@@ -76,7 +76,19 @@ class PostController extends Controller
             'category_id' => $request->category_id,
         ];
 
-        $post = Post::create($postData);
+        if(!$postId){
+            $post = Post::create($postData);
+        } else {
+            $post = Post::find($postId);
+            $post->title = $request->title;
+            $post->description = $request->description;
+            $post->kcal = $request->kcal;
+            $post->time = $request->time;
+            $post->updated_at = now();
+
+            $post->save();
+        }
+
 
         $postData = [
             ...$postData,
@@ -90,6 +102,19 @@ class PostController extends Controller
         // Auth::login($user);
 
         return view('posts.post', ['post' => $postData]);
+    }
+
+    public function edit($postId)
+    {
+        return view('posts.post-edit', [
+            'post' => $this->postRepository->getPostById($postId),
+            'categories' => $this->categoryRepository->getAllCategories()
+        ]);
+    }
+
+    public function submitEdit(Request $request, int $postId)
+    {
+        return $this->store($request, $postId);
     }
 
     public function create()

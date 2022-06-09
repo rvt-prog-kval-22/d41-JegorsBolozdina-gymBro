@@ -24,7 +24,8 @@
                             <hr>
                             <p class="pt-3">{{ $post['kcal'] }} kcal {{ round($post['time']/60,1) }} min</p>
                             <p class="pt-3">{{ $post['author_name'] }}</p>
-                            <p>{{ Illuminate\Support\Carbon::parse($post['created_at'])->format('d/m/Y H:i') }}</p>
+                            <p class="float-left">{{ Illuminate\Support\Carbon::parse($post['updated_at'])->format('d/m/Y H:i') }}</p>
+                            <p class="float-right pb-3"><x-nav-link :href="route('post.edit', ['postId' => $post['id']])">Edit post</x-nav-link></p>
                         </div>
                     </div>
                 </div>

@@ -37,6 +37,10 @@ Route::get('post_create', [PostController::class, 'create'])->middleware(['auth'
 
 Route::post('post-create', [PostController::class, 'store'])->middleware(['auth'])->name('post.store');
 
+Route::get('post_edit/{postId}', [PostController::class, 'edit'])->middleware(['auth'])->name('post.edit');
+
+Route::post('post-edit/{postId}', [PostController::class, 'submitEdit'])->middleware(['auth'])->name('post.submitEdit');
+
 Route::delete('delete-user/id={userId}', [UserController::class, 'remove'])
                 ->name('user.delete');
 
