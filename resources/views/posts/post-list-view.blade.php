@@ -1,17 +1,4 @@
 <x-app-layout>
-    <x-slot name="header">
-        <x-nav-link :href="route('post.viewList')">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Post list') }}
-            </h2>
-        </x-nav-link>
-        <x-nav-link :href="route('post.create')">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Create post') }}
-            </h2>
-        </x-nav-link>
-    </x-slot>
-
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         @foreach ($posts as $post)
             <div class="pt-6">

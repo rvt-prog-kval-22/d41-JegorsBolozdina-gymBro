@@ -708,12 +708,6 @@ select {
 .z-50 {
   z-index: 50;
 }
-.float-right {
-  float: right;
-}
-.float-left {
-  float: left;
-}
 .m-0 {
   margin: 0px;
 }
@@ -1040,13 +1034,17 @@ select {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
-.py-12 {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+.py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 .px-3 {
   padding-left: 0.75rem;
@@ -1059,10 +1057,6 @@ select {
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
-}
-.py-6 {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
 }
 .px-1 {
   padding-left: 0.25rem;
