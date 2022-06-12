@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminPanelController;
 use App\Http\Controllers\Auth\UserController;
+use App\Http\Controllers\Posts\CategoryController;
 use App\Http\Controllers\Posts\PostController;
 use App\Http\Controllers\HomeController;
 
@@ -28,7 +29,11 @@ Route::get('/dashboard', function () {
 // })->middleware(['auth', 'admin'])->name('admin_dashboard');
 Route::get('/admin_dashboard', [AdminPanelController::class, 'create'])->middleware(['auth', 'admin'])->name('admin_dashboard');
 
-Route::get('post_list', [PostController::class, 'viewList'])->middleware(['auth'])->name('post.viewList');
+Route::get('categories', [CategoryController::class, 'create'])->middleware(['auth'])->name('post.viewCategories');
+
+Route::get('post_list', [PostController::class, 'viewAllPosts'])->middleware(['auth'])->name('post.viewAllPosts');
+
+Route::get('categories/{categoryId}/post_list', [PostController::class, 'viewPostListByCategory'])->middleware(['auth'])->name('post.viewPostListByCategory');
 
 Route::get('post/{postId}', [PostController::class, 'viewSingle'])->middleware(['auth'])->name('post.viewSingle');
 
@@ -36,9 +41,9 @@ Route::get('post_create', [PostController::class, 'create'])->middleware(['auth'
 
 Route::post('post-create', [PostController::class, 'store'])->middleware(['auth'])->name('post.store');
 
-Route::get('post_edit/{postId}', [PostController::class, 'edit'])->middleware(['auth'])->name('post.edit');
+Route::get('edit/post={postId}', [PostController::class, 'edit'])->middleware(['auth'])->name('post.edit');
 
-Route::post('post-edit/{postId}', [PostController::class, 'submitEdit'])->middleware(['auth'])->name('post.submitEdit');
+Route::post('edit/post={postId}', [PostController::class, 'submitEdit'])->middleware(['auth'])->name('post.submitEdit');
 
 Route::delete('delete-user/id={userId}', [UserController::class, 'remove'])
                 ->name('user.delete');

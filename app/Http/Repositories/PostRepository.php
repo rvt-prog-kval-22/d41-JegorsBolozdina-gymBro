@@ -26,6 +26,11 @@ class PostRepository
         return Post::create($postDetails);
     }
 
+    public function getPostsByCategory($categoryId)
+    {
+        return Post::where('category_id', $categoryId)->get()->toArray();
+    }
+
     public function updatePost($postId, array $newDetails)
     {
         return Post::whereId($postId)->update($newDetails);

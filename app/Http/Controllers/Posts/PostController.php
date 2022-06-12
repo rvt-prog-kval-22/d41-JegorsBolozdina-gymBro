@@ -28,7 +28,7 @@ class PostController extends Controller
         $this->categoryRepository = $categoryRepository;
     }
 
-    public function viewList()
+    public function viewAllPosts()
     {
         $posts = $this->postRepository->getAllPosts();
         // foreach($posts as $post)
@@ -55,6 +55,17 @@ class PostController extends Controller
         // ];
 
         return view('posts.post', ['post' => $post]);
+    }
+
+    public function viewPostListByCategory($categoryId)
+    {
+        $posts = $this->postRepository->getPostsByCategory($categoryId);
+        $posts = array_map(function ($post) {
+            $post['author_name'] = $this->userRepository->getUsersNameById($post['author_id']);
+            return $post;
+        }, $posts);
+
+        return view('posts.post-list-view', ['posts' => $posts]);
     }
 
     public function store(Request $request, $postId = null)
@@ -84,6 +95,7 @@ class PostController extends Controller
             $post->description = $request->description;
             $post->kcal = $request->kcal;
             $post->time = $request->time;
+            $post->category_id = $request->category_id;
             $post->updated_at = now();
 
             $post->save();

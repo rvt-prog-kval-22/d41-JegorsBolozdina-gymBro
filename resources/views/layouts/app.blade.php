@@ -23,14 +23,14 @@
             <!-- Page Heading -->
             <header class="bg-white shadow">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    <x-nav-link :href="route('post.viewList')">
+                    <x-nav-link :href="route('post.viewCategories')">
                         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                            {{ __('Post list') }}
+                            {{ __('Exercises') }}
                         </h2>
                     </x-nav-link>
                     <x-nav-link :href="route('post.create')">
                         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                            {{ __('Create post') }}
+                            {{ __('Create exercise') }}
                         </h2>
                     </x-nav-link>
                     {{-- {{ $header }} --}}
