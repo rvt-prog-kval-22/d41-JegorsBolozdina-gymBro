@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('home') }}">
-                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
+                        <h1 class="flex justify-center items-center text-gray-500 pt-8>">gymBro</h1>
                     </a>
                 </div>
 

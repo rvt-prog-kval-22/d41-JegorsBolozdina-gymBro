@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminPanelController;
 use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\Posts\PostController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +17,7 @@ use App\Http\Controllers\Posts\PostController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [HomeController::class, 'create'])->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
