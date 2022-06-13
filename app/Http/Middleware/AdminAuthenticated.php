@@ -25,15 +25,13 @@ class AdminAuthenticated
             /** @var User $user */
             $user = Auth::user();
 
-            // if user is not admin take him to his dashboard
-            if ( $user->hasRole('user') ) {
+            // if user is not superadmin take him back to the dashboard
+            if ( $user->hasRole('user') || $user->hasRole('admin') ) {
                 return redirect(route('dashboard'));
             }
 
-            // superadmin only for now since the panel only includes user role change
-            else if ( $user->hasRole('superadmin') ) {
-                return $next($request);
-            }
+            return $next($request);
+
         }
         abort(403);  // permission denied error
     }
