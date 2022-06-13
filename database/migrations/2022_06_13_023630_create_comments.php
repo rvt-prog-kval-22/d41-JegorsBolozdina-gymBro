@@ -16,10 +16,11 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->text('text');
-
+            $table->bigInteger('author_id');
+            $table->bigInteger('post_id');
             $table->timestamps();
-            $table->foreign('category_id')->references('id')->on('categories');
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('author_id')->references('id')->on('users');
+            $table->foreign('post_id')->references('id')->on('posts');
         });
     }
 
