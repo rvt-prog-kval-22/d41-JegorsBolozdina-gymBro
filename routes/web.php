@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\Posts\CategoryController;
 use App\Http\Controllers\Posts\PostController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TinymceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,10 +46,15 @@ Route::get('edit/post={postId}', [PostController::class, 'edit'])->middleware(['
 
 Route::post('edit/post={postId}', [PostController::class, 'submitEdit'])->middleware(['auth'])->name('post.submitEdit');
 
+Route::delete('delete/post={postId}', [PostController::class, 'delete'])->middleware(['auth'])->name('post.delete');
+
 Route::delete('delete-user/id={userId}', [UserController::class, 'remove'])
                 ->name('user.delete');
 
 Route::post('give-priveleges/id={userId}', [UserController::class, 'givePriveleges'])
                 ->name('user.modifyPriveleges');
+
+
+Route::post('/upload', [TinymceController::class, 'store'])->middleware(['auth']);
 
 require __DIR__.'/auth.php';

@@ -11,10 +11,19 @@ return new class extends Migration
         DB::table('categories')->insert(
         array(
             [
+                'name' => 'Full body',
+            ],
+            [
                 'name' => 'Upper body',
             ],
             [
                 'name' => 'Lower body',
+            ],
+            [
+                'name' => 'Chest',
+            ],
+            [
+                'name' => 'Abdominal',
             ],
             [
                 'name' => 'Other',

@@ -72,7 +72,7 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string'],
+            'editor' => ['required', 'string'],
             'kcal' => ['required', 'integer'],
             'time' => ['required', 'integer'],
             'category_id' => ['required'],
@@ -80,7 +80,7 @@ class PostController extends Controller
 
         $postData = [
             'title' => $request->title,
-            'description' => $request->description,
+            'description' => $request->editor,
             'author_id' => $request->user()->id,
             'kcal' => $request->kcal,
             'time' => $request->time,
@@ -92,7 +92,7 @@ class PostController extends Controller
         } else {
             $post = Post::find($postId);
             $post->title = $request->title;
-            $post->description = $request->description;
+            $post->description = $request->editor;
             $post->kcal = $request->kcal;
             $post->time = $request->time;
             $post->category_id = $request->category_id;
@@ -122,6 +122,13 @@ class PostController extends Controller
             'post' => $this->postRepository->getPostById($postId),
             'categories' => $this->categoryRepository->getAllCategories()
         ]);
+    }
+
+    public function delete($postId)
+    {
+        $this->postRepository->deletePost($postId);
+
+        return view('posts.categories');
     }
 
     public function submitEdit(Request $request, int $postId)

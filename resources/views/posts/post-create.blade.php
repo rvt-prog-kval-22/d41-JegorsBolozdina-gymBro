@@ -22,14 +22,14 @@
 
                         <!-- Post Description  -->
                         <div class="mt-4">
-                            <x-label for="description" :value="'Description'" />
+                            <x-label for="editor" value="Post body" />
+                            <x-tinymce-editor></x-tinymce-editor>
 
-                            <x-input id="description" class="block mt-1 w-full" type="text" name="description" :value="old('description')" required />
                         </div>
 
                         <!-- Time to execute (in seconds)  -->
                         <div class="mt-4">
-                            <x-label for="time" :value="'Time (in seconds)'" />
+                            <x-label for="time" value="Time (in seconds)" />
 
                             <x-input id="time" class="block mt-1 w-full" type="text" name="time" :value="old('time')" required />
                         </div>

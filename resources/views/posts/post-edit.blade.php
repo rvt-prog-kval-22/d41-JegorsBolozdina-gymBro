@@ -22,9 +22,9 @@
 
                         <!-- Post Description  -->
                         <div class="mt-4">
-                            <x-label for="description" :value="'Description'" />
+                            <x-label for="editor" value="Post body" />
+                            <x-tinymce-editor>{!! $post['description'] !!}</x-tinymce-editor>
 
-                            <x-input id="description" class="block mt-1 w-full" type="text" name="description" :value="$post['description']" required />
                         </div>
 
                         <!-- Time to execute (in seconds)  -->

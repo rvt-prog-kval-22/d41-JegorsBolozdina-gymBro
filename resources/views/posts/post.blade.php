@@ -5,12 +5,11 @@
                     <div class="p-6 bg-white border-b border-gray-200">
                         <p class="pb-3">{{ $post['title'] }}</p>
                         <hr>
-                        <p class="py-4">{{ $post['description'] }}</p>
+                        {!! $post['description'] !!}
                         <hr>
                         <p class="pt-3">{{ $post['author_name'] }}</p>
                     </div>
                 </div>
             </div>
         </div>
-
 </x-app-layout>
