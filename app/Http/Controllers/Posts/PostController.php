@@ -49,6 +49,7 @@ class PostController extends Controller
     {
         $post = $this->postRepository->getPostById($postId);
         $post['author_name'] = $this->userRepository->getUsersNameById($post['author_id']);
+        // $categoryName = $this->categoryRepository->getCategoryNameById($categoryId);
         // $post[] = [
         //     ...$post,
         //     $this->userRepository->getUserById($post->author_id),

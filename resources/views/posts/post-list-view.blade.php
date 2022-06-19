@@ -15,7 +15,7 @@
                                 <p class="pt-3">{{ $post['kcal'] }} kcal {{ round($post['time']/60,1) }} min</p>
                                 <p class="pt-3">{{ $post['author_name'] }}</p>
                                 <p>{{ Illuminate\Support\Carbon::parse($post['updated_at'])->format('d/m/Y H:i') }}</p>
-                                @if(Auth::user()->name === $post['author_name'] || Auth::user()->role === 'admin')
+                                @if(Auth::user()->name === $post['author_name'] || in_array(Auth::user()->role, ['superadmin','admin']))
                                     <a class="underline" href="{{ route('post.edit', ['postId' => $post['id']]) }}">Edit post</a>
                                     <form action="{{ route('post.delete', ['postId' => $post['id']]) }}" method="POST">
                                         @csrf

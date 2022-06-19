@@ -17,8 +17,7 @@ class UserAllowed
      */
     public function handle(Request $request, Closure $next)
     {
-        dd($request);
-        if (Auth::user()->id === $request->author_id){
+        if (Auth::user()->id === $request->author_id || in_array(Auth::user()->role, ['admin', 'superadmin'])){
             return $next($request);
         }
         abort(403);

@@ -17,6 +17,9 @@
         },
         image_title: true,
         automatic_uploads: true,
+
+        relative_urls : false,
+
         images_upload_url: '/upload',
         file_picker_types: 'image',
         file_picker_callback: function(cb, value, meta) {
@@ -25,8 +28,8 @@
             input.setAttribute('accept', 'image/*');
             input.onchange = function() {
                 var file = this.files[0];
-
                 var reader = new FileReader();
+
                 reader.readAsDataURL(file);
                 reader.onload = function () {
                     var id = 'blobid' + (new Date()).getTime();

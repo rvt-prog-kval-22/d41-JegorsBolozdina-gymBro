@@ -8,10 +8,12 @@ class TinymceController extends Controller
 {
     public function store(Request $request)
 {
-        $file=$request->file('file');
-        $path= url('/uploads/').'/'.$file->getClientOriginalName();
-        $imgpath=$file->move(public_path('/uploads/'),$file->getClientOriginalName());
-        $fileNameToStore= $path;
+        $file = $request->file('file');
+        $path = '/uploads/' . $file->getClientOriginalName();
+        // $path = url('') . '/uploads/' . $file->getClientOriginalName();
+        $imgpath = $file->move(public_path('/uploads/'), $file->getClientOriginalName());
+        // dd($imgpath, $path);
+        $fileNameToStore = $path;
 
         return json_encode(['location' => $fileNameToStore]);
 

@@ -14,6 +14,7 @@ return new class extends Migration
             $table->text('description');
             $table->integer('kcal');
             $table->integer('time');
+            $table->enum('difficulty', ['Easy', 'Medium', 'Hard']);
             $table->bigInteger('author_id')->unsigned();
             $table->bigInteger('category_id')->unsigned();
             $table->timestamps();

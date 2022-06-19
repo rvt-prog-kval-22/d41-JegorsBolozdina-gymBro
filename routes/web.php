@@ -34,17 +34,17 @@ Route::get('categories', [CategoryController::class, 'create'])->middleware(['au
 
 Route::get('post_list', [PostController::class, 'viewAllPosts'])->middleware(['auth'])->name('post.viewAllPosts');
 
-Route::get('categories/{categoryId}/post_list', [PostController::class, 'viewPostListByCategory'])->middleware(['auth'])->name('post.viewPostListByCategory');
+Route::get('categories/{categoryId}', [PostController::class, 'viewPostListByCategory'])->middleware(['auth'])->name('post.viewPostListByCategory');
 
-Route::get('post/{postId}', [PostController::class, 'viewSingle'])->middleware(['auth'])->name('post.viewSingle');
+Route::get('posts/{postId}', [PostController::class, 'viewSingle'])->middleware(['auth'])->name('post.viewSingle');
 
-Route::get('post_create', [PostController::class, 'create'])->middleware(['auth'])->name('post.create');
+Route::get('create-post', [PostController::class, 'create'])->middleware(['auth'])->name('post.create');
 
-Route::post('post-create', [PostController::class, 'store'])->middleware(['auth'])->name('post.store');
+Route::post('create-post', [PostController::class, 'store'])->middleware(['auth'])->name('post.store');
 
-Route::get('edit/post={postId}', [PostController::class, 'edit'])->middleware(['auth'])->name('post.edit');
+Route::get('edit/post={postId}', [PostController::class, 'edit'])->middleware(['auth', 'user.allowed'])->name('post.edit');
 
-Route::post('edit/post={postId}', [PostController::class, 'submitEdit'])->middleware(['auth'])->name('post.submitEdit');
+Route::post('edit/post={postId}', [PostController::class, 'submitEdit'])->middleware(['auth', 'user.allowed'])->name('post.submitEdit');
 
 Route::delete('delete/post={postId}', [PostController::class, 'delete'])->middleware(['auth'])->name('post.delete');
 
