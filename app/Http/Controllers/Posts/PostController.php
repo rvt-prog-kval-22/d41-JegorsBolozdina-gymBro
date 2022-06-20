@@ -87,6 +87,7 @@ class PostController extends Controller
             'author_id' => $request->user()->id,
             'kcal' => $request->kcal,
             'time' => $request->time,
+            'difficulty' => $request->difficulty,
             'category_id' => $request->category_id,
         ];
 
@@ -99,6 +100,7 @@ class PostController extends Controller
             $post->description = $request->editor;
             $post->kcal = $request->kcal;
             $post->time = $request->time;
+            $post->difficulty = $request->difficulty;
             $post->category_id = $request->category_id;
             $post->updated_at = now();
 

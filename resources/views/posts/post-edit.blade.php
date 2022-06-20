@@ -23,13 +23,13 @@
                         </div>
 
                         <!-- Name -->
-                        <div>
+                        <div class="mt-4">
                             <x-label for="title" :value="'Title'" />
 
                             <x-input id="title" class="block mt-1 w-full" type="text" name="title" :value="$post['title']" required autofocus />
                         </div>
 
-                        <div>
+                        <div class="mt-4">
                             <x-label for="desc" :value="'Short description'" />
 
                             <x-input id="desc" class="block mt-1 w-full" type="text" name="desc" :value="$post['short_description']" required autofocus />
