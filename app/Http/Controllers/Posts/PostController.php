@@ -49,13 +49,13 @@ class PostController extends Controller
     {
         $post = $this->postRepository->getPostById($postId);
         $post['author_name'] = $this->userRepository->getUsersNameById($post['author_id']);
-        // categoryName = $this->categoryRepository->getCategoryNameById($categoryId);
+        $categoryName = $this->categoryRepository->getCategoryNameById($post['category_id']);
         // $post[] = [
         //     ...$post,
         //     $this->userRepository->getUserById($post->author_id),
         // ];
 
-        return view('posts.post', ['post' => $post]);
+        return view('posts.post', ['post' => $post, 'categoryName' => $categoryName]);
     }
 
     public function viewPostListByCategory($categoryId)
@@ -65,8 +65,10 @@ class PostController extends Controller
             $post['author_name'] = $this->userRepository->getUsersNameById($post['author_id']);
             return $post;
         }, $posts);
+        $category['name'] = $this->categoryRepository->getCategoryNameById($categoryId);
+        $category['id'] = $categoryId;
 
-        return view('posts.post-list-view', ['posts' => $posts]);
+        return view('posts.post-list-view', ['posts' => $posts, 'category' => $category]);
     }
 
     public function store(Request $request, $postId = null)
@@ -121,7 +123,9 @@ class PostController extends Controller
 
         // Auth::login($user);
 
-        return view('posts.post', ['post' => $postData]);
+        $categoryName = $this->categoryRepository->getCategoryNameById($post['category_id']);
+
+        return view('posts.post', ['post' => $postData, 'categoryName' => $categoryName]);
     }
 
     public function edit($postId)

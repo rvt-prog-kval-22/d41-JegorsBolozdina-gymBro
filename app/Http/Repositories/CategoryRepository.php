@@ -13,6 +13,6 @@ class CategoryRepository
 
     public function getCategoryNameById($categoryId)
     {
-        return Category::findOrFail($categoryId)->value('name');
+        return Category::findOrFail($categoryId)->name;
     }
 }
