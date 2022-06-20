@@ -24584,9 +24584,9 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-var app = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)({});
-app.component('post-list', _components_postList__WEBPACK_IMPORTED_MODULE_1__["default"]);
-app.mount('#app');
+var app = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)({}); // app.component('post-list', postList);
+// app.mount('#app');
+
 
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_2__["default"];
 alpinejs__WEBPACK_IMPORTED_MODULE_2__["default"].start();

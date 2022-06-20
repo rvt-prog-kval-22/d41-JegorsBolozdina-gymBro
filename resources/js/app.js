@@ -5,9 +5,9 @@ import postList from './components/postList';
 
 const app = createApp({});
 
-app.component('post-list', postList);
+// app.component('post-list', postList);
 
-app.mount('#app');
+// app.mount('#app');
 
 import Alpine from 'alpinejs';
 
