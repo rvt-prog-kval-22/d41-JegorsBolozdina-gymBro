@@ -1,5 +1,8 @@
 <x-app-layout>
     @if(!empty($posts))
+    <div id="app">
+        <test></test>
+    </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             @foreach ($posts as $post)
                 <div class="pt-6">
