@@ -13,9 +13,11 @@ class Post extends Model
      */
     protected $fillable = [
         'title',
+        'short_description',
         'description',
         'kcal',
         'time',
+        'difficulty',
         'author_id',
         'category_id',
     ];

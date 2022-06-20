@@ -13,7 +13,7 @@
                                     <a class="underline" href="{{ route('post.viewSingle', ['postId' => $post['id']]) }}">{{ $post['title'] }}</a>
                                 </p>
                                 <hr>
-                                <p class="py-4">{{ $post['description'] }}</p>
+                                <p class="py-4">{{ $post['short_description'] }}</p>
                                 <hr>
                                 <p class="pt-3">{{ $post['kcal'] }} kcal {{ round($post['time']/60,1) }} min</p>
                                 <p class="pt-3">{{ $post['author_name'] }}</p>

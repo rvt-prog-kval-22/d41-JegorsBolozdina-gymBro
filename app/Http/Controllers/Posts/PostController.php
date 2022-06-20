@@ -73,6 +73,7 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
+            'desc' => ['required', 'string', 'max:255'],
             'editor' => ['required', 'string'],
             'kcal' => ['required', 'integer'],
             'time' => ['required', 'integer'],
@@ -81,6 +82,7 @@ class PostController extends Controller
 
         $postData = [
             'title' => $request->title,
+            'short_description' => $request->desc,
             'description' => $request->editor,
             'author_id' => $request->user()->id,
             'kcal' => $request->kcal,
@@ -93,6 +95,7 @@ class PostController extends Controller
         } else {
             $post = Post::find($postId);
             $post->title = $request->title;
+            $post->short_description = $request->desc;
             $post->description = $request->editor;
             $post->kcal = $request->kcal;
             $post->time = $request->time;

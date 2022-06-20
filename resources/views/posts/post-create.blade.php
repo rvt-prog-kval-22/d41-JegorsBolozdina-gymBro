@@ -13,11 +13,26 @@
                         @endif
                         @csrf
 
+                        <div>
+                            <x-label for="category_id" :value="'Category'" />
+                            <select name="category_id" class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Category">
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category['id'] }}" id="{{ $category['id'] }}">{{ $category['name'] }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <!-- Name -->
                         <div>
                             <x-label for="title" :value="'Title'" />
 
                             <x-input id="title" class="block mt-1 w-full" type="text" name="title" :value="old('title')" required autofocus />
+                        </div>
+
+                        <div>
+                            <x-label for="desc" :value="'Short description'" />
+
+                            <x-input id="desc" class="block mt-1 w-full" type="text" name="desc" :value="old('desc')" required autofocus />
                         </div>
 
                         <!-- Post Description  -->
@@ -42,10 +57,10 @@
                         </div>
 
                         <div class="mt-4 xl:w-96">
-                            <x-label for="category_id" :value="'Category'" />
-                            <select name="category_id" class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Category">
-                                @foreach ($categories as $category)
-                                    <option value="{{ $category['id'] }}" id="{{ $category['id'] }}">{{ $category['name'] }}</option>
+                            <x-label for="difficulty" :value="'Difficulty'" />
+                            <select name="difficulty" class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Difficulty">
+                                @foreach (['Easy', 'Medium', 'Hard'] as $difficulty)
+                                    <option value="{{ $difficulty }}" id="{{ $difficulty }}">{{ $difficulty }}</option>
                                 @endforeach
                             </select>
                         </div>
