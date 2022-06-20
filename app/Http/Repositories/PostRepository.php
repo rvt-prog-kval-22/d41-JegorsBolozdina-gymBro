@@ -11,6 +11,11 @@ class PostRepository
         return Post::all()->toArray();
     }
 
+    public function getAllPostsByUser(int $userId)
+    {
+        return Post::where('author_id', $userId)->get()->toArray();
+    }
+
     public function getPostById($postId)
     {
         return Post::findOrFail($postId);

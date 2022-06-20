@@ -71,6 +71,18 @@ class PostController extends Controller
         return view('posts.post-list-view', ['posts' => $posts, 'category' => $category]);
     }
 
+    public function viewPostsByUser(int $userId)
+    {
+        $posts = $this->postRepository->getAllPostsByUser($userId);
+        $posts = array_map(function ($post) {
+            $post['author_name'] = $this->userRepository->getUsersNameById($post['author_id']);
+            return $post;
+        }, $posts);
+
+
+        return view('posts.post-list-view', ['posts' => $posts]);
+    }
+
     public function store(Request $request, $postId = null)
     {
         $request->validate([

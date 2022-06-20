@@ -39,6 +39,9 @@
                     </x-slot>
 
                     <x-slot name="content">
+                        <x-dropdown-link :href="route('user.posts', ['userId' => Auth::user()->id])">
+                            {{ __('My exercises') }}
+                        </x-dropdown-link>
                         <x-dropdown-link :href="route('user.editData')">
                             {{ __('Update user data') }}
                         </x-dropdown-link>

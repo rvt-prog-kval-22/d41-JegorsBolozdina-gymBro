@@ -42,6 +42,8 @@ Route::get('create-post', [PostController::class, 'create'])->middleware(['auth'
 
 Route::post('create-post', [PostController::class, 'store'])->middleware(['auth'])->name('post.store');
 
+Route::get('profile/{userId}/posts', [PostController::class, 'viewPostsByUser'])->middleware(['auth'])->name('user.posts');
+
 Route::get('profile/edit_data', [UserController::class, 'showEditDataPage'])->middleware(['auth'])->name('user.editData');
 
 Route::get('profile/edit_pass', [UserController::class, 'showEditPassPage'])->middleware(['auth'])->name('user.editPass');
