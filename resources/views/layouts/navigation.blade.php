@@ -39,8 +39,11 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('user.edit')">
-                            {{ __('Profile Settings') }}
+                        <x-dropdown-link :href="route('user.editData')">
+                            {{ __('Update user data') }}
+                        </x-dropdown-link>
+                        <x-dropdown-link :href="route('user.editPass')">
+                            {{ __('Update password') }}
                         </x-dropdown-link>
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">

@@ -75,8 +75,8 @@ class PostController extends Controller
             'title' => ['required', 'string', 'max:255'],
             'desc' => ['required', 'string', 'max:255'],
             'editor' => ['required', 'string'],
-            'kcal' => ['required', 'integer'],
-            'time' => ['required', 'integer'],
+            'kcal' => ['required', 'integer', 'min:1', 'max:10000'],
+            'time' => ['required', 'integer', 'min:1', 'max:10000'],
             'category_id' => ['required'],
         ]);
 

@@ -42,9 +42,13 @@ Route::get('create-post', [PostController::class, 'create'])->middleware(['auth'
 
 Route::post('create-post', [PostController::class, 'store'])->middleware(['auth'])->name('post.store');
 
-Route::get('profile/edit', [UserController::class, 'showEditPage'])->middleware(['auth'])->name('user.edit');
+Route::get('profile/edit_data', [UserController::class, 'showEditDataPage'])->middleware(['auth'])->name('user.editData');
 
-Route::post('profile/edit', [UserController::class, 'submitEdit'])->middleware(['auth'])->name('user.edit');
+Route::get('profile/edit_pass', [UserController::class, 'showEditPassPage'])->middleware(['auth'])->name('user.editPass');
+
+Route::post('profile/edit=data', [UserController::class, 'submitUpdateInfo'])->middleware(['auth'])->name('user.changeData');
+
+Route::post('profile/edit=pass', [UserController::class, 'submitEditPass'])->middleware(['auth'])->name('user.changePass');
 
 Route::get('edit/post={postId}', [PostController::class, 'edit'])->middleware(['auth', 'user.allowed'])->name('post.edit');
 
