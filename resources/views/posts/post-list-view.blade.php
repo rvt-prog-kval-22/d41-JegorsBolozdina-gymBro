@@ -1,7 +1,7 @@
 <x-app-layout>
     @if(!empty($posts))
     <div id="app">
-        <test></test>
+        <post-list></post-list>
     </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             @foreach ($posts as $post)
@@ -28,7 +28,6 @@
                                         <button type="submit" class="underline">Delete</button>
                                     </form>
                                 @endif()
-
                             </div>
                         </div>
                     </div>

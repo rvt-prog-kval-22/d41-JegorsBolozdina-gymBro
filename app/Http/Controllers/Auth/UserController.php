@@ -18,6 +18,11 @@ class UserController extends Controller
     {
     }
 
+    public function showEditPage()
+    {
+        return view('user_edit');
+    }
+
     public function remove($userId)
     {
         $this->userRepository->deleteUser($userId);

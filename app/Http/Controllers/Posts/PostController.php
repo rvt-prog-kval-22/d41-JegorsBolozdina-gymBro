@@ -49,7 +49,7 @@ class PostController extends Controller
     {
         $post = $this->postRepository->getPostById($postId);
         $post['author_name'] = $this->userRepository->getUsersNameById($post['author_id']);
-        // $categoryName = $this->categoryRepository->getCategoryNameById($categoryId);
+        // categoryName = $this->categoryRepository->getCategoryNameById($categoryId);
         // $post[] = [
         //     ...$post,
         //     $this->userRepository->getUserById($post->author_id),
@@ -104,7 +104,9 @@ class PostController extends Controller
 
 
         $postData = [
+            'id' => $post->id,
             ...$postData,
+            'updated_at' => $post->updated_at,
             'author_name' => $request->user()->name
         ];
 
@@ -129,7 +131,7 @@ class PostController extends Controller
     {
         $this->postRepository->deletePost($postId);
 
-        return view('posts.categories');
+        return view('posts.categories', ['categories' => $this->categoryRepository->getAllCategories()]);
     }
 
     public function submitEdit(Request $request, int $postId)

@@ -42,6 +42,10 @@ Route::get('create-post', [PostController::class, 'create'])->middleware(['auth'
 
 Route::post('create-post', [PostController::class, 'store'])->middleware(['auth'])->name('post.store');
 
+Route::get('profile/edit', [UserController::class, 'showEditPage'])->middleware(['auth'])->name('user.edit');
+
+Route::post('profile/edit', [UserController::class, 'submitEdit'])->middleware(['auth'])->name('user.edit');
+
 Route::get('edit/post={postId}', [PostController::class, 'edit'])->middleware(['auth', 'user.allowed'])->name('post.edit');
 
 Route::post('edit/post={postId}', [PostController::class, 'submitEdit'])->middleware(['auth', 'user.allowed'])->name('post.submitEdit');
