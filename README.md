@@ -6,7 +6,7 @@ Kvalifikācijas darba uzdevums ir izveidot lietotāju vingrojumu analīzes un da
 
 Backend: PHP, Laravel, MySQL
 
-Frontend: Laravel Blade, Vue, SASS, Tailwind
+Frontend: Laravel Blade, Vue, Tailwind
 
 # Izmantotie avoti
 
@@ -31,4 +31,10 @@ Lai palaistu sistēmu ir vajadzīga programma Docker Desktop, kas izveidos virtu
 5. Ieiet jaunajā direktorijā un ierakstīt komandu “./vendor/bin/sail up”, lai palaistu Docker konteinerus un visi “packages”, vajadzīgie šai sistēmai, ieinstalētos.
 6. Palaist migrācijas ar komandu “./vendor/bin/sail artisan migrate”, lai izveidotos datubāzes tabulas ar datiem.
 
+**VAI**
+
+Ja serveris ir ieslēgts, to var apmeklēt, ierakstot http://159.223.12.215/ sava parlūkprogrammā.
+Superadmin dati 
+E-pasts: superadmin@admin.com 
+Parole: 12345678
 
