@@ -35,7 +35,7 @@ Lai palaistu sistēmu ir vajadzīga programma Docker Desktop, kas izveidos virtu
 
 Ja serveris ir ieslēgts, to var apmeklēt, ierakstot http://159.223.12.215/ sava parlūkprogrammā.
 
-Superadmin dati 
+Superadmin dati -
 E-pasts: superadmin@admin.com 
 Parole: 12345678
 
